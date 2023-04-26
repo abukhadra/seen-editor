@@ -15,7 +15,7 @@ pub struct TranslationsState<'a>(pub crate::labels::Labels<'a>);
 //================
 //   LangState
 //================
-pub struct LangState(pub Mutex<seen::lang::Lang>);
+pub struct LangState(pub Mutex<seen_compiler::lang::Lang>);
 
 //================
 //   LangState

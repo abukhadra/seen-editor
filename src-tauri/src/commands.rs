@@ -10,7 +10,7 @@ use tauri::{
     State,
     Manager
 };
-use seen::{
+use seen_compiler::{
     self,
     lang::Lang,
     util::{

@@ -7,7 +7,7 @@ use tauri::{
     RunEvent
 };
 
-use seen::{
+use seen_compiler::{
     self,
     lang::Lang,
 };

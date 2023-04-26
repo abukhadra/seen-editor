@@ -9,7 +9,7 @@ mod menu;
 mod commands;
 mod state;
 
-use seen::{
+use seen_compiler::{
     self,
     util::cli::{
         self,
