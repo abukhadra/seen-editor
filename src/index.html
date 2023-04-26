@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+	<head>
+
+		<meta charset="utf-8"/>
+
+		<link rel="stylesheet" href="lib/codemirror/codemirror.css">
+		<link rel="stylesheet" href="assets/codemirror/addon/scroll/simplescrollbars.css">
+		<link rel="stylesheet" href="assets/codemirror/addon/fold/foldgutter.css" />
+		<link rel="stylesheet" href="assets/codemirror/addon/hint/show-hint.css" />
+		<link rel="stylesheet" href="assets/css/index.css">
+
+		<!-- <link rel="stylesheet" href="assets/css/proj-explorer.css"> -->
+
+		<script src="assets/js/arabic.js"></script>
+			
+		<script src="assets/codemirror/mode/seen/common.js"></script>
+
+		<script src="lib/codemirror/codemirror.js"></script>
+		<script src="assets/codemirror/addon/mode/simple.js"></script>
+		<script src="assets/codemirror/mode/seen/seen-ar.js"></script> 
+		<script src="assets/codemirror/mode/seen/seen-en.js"></script>
+		<script src="assets/codemirror/addon/scroll/simplescrollbars.js"></script>	
+		<script src="assets/codemirror/addon/selection/active-line.js"></script>
+		<script src="assets/codemirror/addon/edit/matchbrackets.js"></script>
+		<script src="assets/codemirror/addon/edit/closebrackets.js"></script>
+		<script src="assets/codemirror/addon/fold/foldcode.js"></script>
+		<script src="assets/codemirror/addon/fold/foldgutter.js"></script>
+		<script src="assets/codemirror/addon/hint/show-hint.js"></script>
+		<script src="assets/codemirror/addon/fold/brace-fold.js"></script>
+		<script src="assets/codemirror/addon/fold/indent-fold.js"></script>
+		<script src="assets/codemirror/addon/fold/comment-fold.js"></script>
+
+		<script type="module" src="assets/js/labels.js" defer></script>
+		<script type="module" src="assets/js/index.js" defer></script>
+					
+		<script type="module">
+			import {appendThemesToHead} from "./assets/js/common.js";
+			appendThemesToHead();
+		</script>
+
+		<style></style>
+	</head>
+
+	<body>
+		<div id="wrapper" class="CodeMirror">
+			<div id="container">					
+				<div id="project_explorer" hidden class="tree"> <!--hide, not ready yet-->
+				</div>				
+				<div id="editor_output">
+					<div id="tabs_toolbar">
+					<div id="tabs"> 
+					</div>
+					<div id="editor_toolbar">
+						<button id="build" type="button"></button>
+						<button id="run" type="button"></button>
+						<button id="terminate" type="button"></button>
+					</div>		
+					</div>
+					<div id="path"></div>
+					<textarea id="code" name="code"></textarea>				
+					<div id="output_toolbar">
+						<button id="clear" type="button"></button>
+					</div>				
+					<div id="output" class="CodeMirror"></div>
+				</div>
+			</div>
+		</div>	
+		<footer id="status_bar"></footer>		
+			
+	</body>
+	</script>
+
+</html>

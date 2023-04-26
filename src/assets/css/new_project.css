@@ -1,0 +1,22 @@
+.CodeMirror, html, body {
+    height: 100%;
+    margin: 0;
+}
+
+#container {
+    margin: 0
+}
+
+label {
+    width: 150px;
+    display: inline-block;
+}
+
+button, select, option, input {
+    color: inherit;
+    background-color: inherit;
+}
+
+input {
+    border: 1px solid;
+}

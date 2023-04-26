@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+		<script type="module">
+			import {appendThemesToHead} from "./assets/js/common.js";
+			appendThemesToHead();
+            document.head.innerHTML += `<link rel="stylesheet" href="assets/css/new_project.css">`
+		</script>
+    </head>
+    <body  class="CodeMirror">
+        <div id="container" class="CodeMirror">
+        <form id="form" autocomplete="off">
+                <fieldset>
+                    <legend id="project_details"></legend>
+                        <label id="name_label" for="name"></label> 
+                        <input  id="name"  
+                                type="text" 
+                                size="50" 
+                                autocomplete="false"
+                                spellcheck="false" 
+                                />
+                        <br>
+
+                        <label id="path_label" for="path"></label>
+                        <input id="path" 
+                                type="text" 
+                                size="50" 
+                                autocomplete="false"
+                                spellcheck="false"                                 
+                                />  
+                        <button id="browse" type="button"></button><br>
+                        
+                        <label id="template_label" for="template"></label>
+                        <select id="template" name="template">
+                          <option id="template_command_line" value="command_line"></option>
+                          <option id="template_web_server" value="webserver"></option>
+                        </select>                        
+                        <br>
+
+                        <label id="lang_label" for="lang"></label>
+                        <select id="lang" name="lang">
+                            <option id="lang_ar" value="ar"></option>
+                            <option id="lang_en" value="en"></option>			
+                        </select>                        
+                        <br>
+
+                </fieldset>
+                <br>
+                 <button id="ok"></button>     
+                <button id="cancel" type="button"></button>
+                 
+        </form>
+        </div>
+    </body>
+
+    <script type="module">
+        import {init} from './assets/js/new-proj.js';
+        init();
+    </script>
+</html>

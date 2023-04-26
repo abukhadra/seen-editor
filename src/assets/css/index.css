@@ -1,0 +1,191 @@
+@font-face {
+    font-family: AbdoFreeRegular;
+    src: url("../font/Abdo\ Free\ Regular.ttf") format("truetype");
+ }
+
+ @font-face {
+    font-family: NotoSansMathRegular;
+    src: url("../font/NotoSansMath-Regular.ttf") format("truetype");
+    /* src: https://en.wikipedia.org/wiki/Mathematical_operators_and_symbols_in_Unicode */
+    /* unicode-range: U+1EE4D;  // arabic symbol for Result */
+    unicode-range: 
+        U+1EE00-1EEFF, /* Arabic Mathematical Alphabetic Symbols block */
+        U+2200–U+22FF, /* Mathematical Operators block */ 
+        U+2A00–U+2AFF, /* Supplemental Mathematical Operators block */ 
+        U+1D400–U+1D7FF,/* Mathematical Alphanumeric Symbols block */
+        U+2100–U+214F, /* Letterlike Symbols block */
+        U+27C0–U+27EF, /* Miscellaneous Mathematical Symbols-A block */
+        U+2980–U+29FF, /* Miscellaneous Mathematical Symbols-B block */
+        U+2300–U+23FF, /* Miscellaneous Technical block */
+        U+25A0–U+25FF, /* Geometric Shapes block */
+        U+2B00–U+2BFF, /* Miscellaneous Symbols and Arrows block */
+        U+2190–U+21FF, /* Arrows block */
+        U+27F0–U+27FF, /* Supplemental Arrows-A block */
+        U+2900–U+297F, /* Supplemental Arrows-B block */
+        U+20D0-U+20FF, /* Combining Diacritical Marks for Symbols */
+        U+FD3F
+    ;
+ }
+
+ @font-face {
+    font-family: UthmanicHafs;
+    src: url("../font/UthmanicHafs_V20.ttf");
+ }
+
+.ayah {
+    font-family: UthmanicHafs;
+}
+
+.CodeMirror {
+    margin: 3px; 
+    flex-grow:1;
+    font-family: monospace, NotoSansMathRegular;
+    /* font-size: 12px; */
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display:flex; 
+    flex-direction:column;
+    font-family: monospace, NotoSansMathRegular;
+}
+
+#wrapper {
+    flex-grow:1;
+    display:flex; 
+    flex-direction:column;
+    margin: 0px;
+    padding: 0px;
+}		
+
+#container {
+    overflow: hidden;   /*https://stackoverflow.com/a/35609992*/
+    flex-grow:1;
+    display:flex; 
+    flex-direction:row; 
+    border-top: 1px solid;     
+}
+
+#project_label {
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 1px solid;
+}
+#project_explorer {
+    padding: 5px;
+    align-items: stretch;
+    overflow-y: auto;
+    overflow-x: hidden; 
+    min-width: 40px;
+    width: 250px;
+}
+
+#editor_output {
+    flex-grow:1;
+    display:flex; 
+    flex-direction:column;      
+    border-left: 1px solid;
+    border-right: 1px solid;
+}
+
+
+#tabs_toolbar {
+    display: flex;
+    overflow: hidden;
+    flex-direction: row;   
+    border-bottom: 1px solid;
+}
+
+#tabs {
+    overflow:hidden;
+    justify-content: flex_start;
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+}
+
+.tab {
+    flex-shrink: 0;
+    flex-grow: 0;
+    overflow: hidden;
+    align-items: flex-start;
+    cursor: pointer;
+}
+
+
+.file_type_icon {
+    padding-left: 5px;
+    padding-right: 5px;
+    font-family: AbdoFreeRegular;
+    color: rgb(109, 167, 221);    
+    user-select: none;
+}
+
+.close_tab {
+    border: none;
+}
+
+#editor_toolbar {
+    overflow: hidden;
+    padding: 5px;
+    flex-shrink: 0;
+}
+
+#path {
+    padding-left: 10px;
+    border-bottom: 1px solid;
+}
+
+
+#output_toolbar {
+    padding: 5px;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+}
+
+#output {
+    max-height:150px;
+    overflow:auto;
+    word-break: break-all;
+    flex-grow: none;    
+}
+
+#status_bar {
+    padding-right: 5px;
+    padding-left: 5px;
+    border-top: 1px solid;
+}
+
+p {
+    margin: 0px;
+}
+
+.btn-link {
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+.btn-link:hover{
+    text-decoration: underline;
+}			
+
+button, select, option {
+    color: inherit;
+    background-color: inherit;
+    border: none;
+}
+
+button {
+    cursor: pointer;
+    border: 1px solid;
+}
+
+button:hover {
+    filter: invert(60%)
+}
