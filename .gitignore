@@ -2,3 +2,5 @@
 .DS_Store
 .DS_Store?
 node_modules
+src-tauri/Cargo.lock
+.DS_Store
