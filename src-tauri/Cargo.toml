@@ -18,7 +18,8 @@ strip = true
 tauri-build = { version = "1.2", features = [] }
 
 [dependencies.seen-compiler]
-git = "https://github.com/abukhadra/seen-compiler.git"
+# git = "https://github.com/abukhadra/seen-compiler.git"
+path = "../../seen-compiler"
 
 [dependencies]
 env_logger = "0.10.0"

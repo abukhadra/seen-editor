@@ -1,3 +1,5 @@
+// FIXME: translations should be externalized to data files
+
 //================
 //   INDEX_LABELS
 //================

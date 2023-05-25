@@ -449,7 +449,9 @@ if (Array.isArray(selected)) {
       const mainPath = await invoke("main_path", {langId: projLang, path: selected});
       await invoke(
         "read_src",  
-        { path: selected }
+        { langId: projLang,
+          path: selected 
+        }
       ).then((src) => {
           editor.setOption("lineNumberFormatter", lineNumberFormatter(editorDirection));
           editor.setValue(src);

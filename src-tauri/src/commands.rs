@@ -13,6 +13,12 @@ use tauri::{
 use seen_compiler::{
     self,
     lang::Lang,
+    transl::transl::Transl,
+    project::{
+        conf,
+        build,
+        src
+    },
     util::{
         cli, 
         fmt::Color
@@ -91,7 +97,7 @@ pub fn home_dir(homedir_state: State<HomeDirState>) -> Option<PathBuf> {
 //================
 #[tauri::command]
 pub fn is_proj_dir(path: &str) -> bool {
-    cli::proj_lang(&PathBuf::from(path)).is_ok()
+    conf::proj_lang(&PathBuf::from(path)).is_ok()
 }
 
 //================
@@ -99,7 +105,7 @@ pub fn is_proj_dir(path: &str) -> bool {
 //================
 #[tauri::command]
 pub fn proj_lang(path: &str) -> String {
-    cli::proj_lang(&PathBuf::from(path))
+    conf::proj_lang(&PathBuf::from(path))
         .expect("could not get the project language!")
         .to_string()
         .to_lowercase()
@@ -112,8 +118,10 @@ pub fn proj_name(
     lang_id: &str,
     path: &str
 ) -> String {
-    cli::proj_name(
-        &Lang::from_str(lang_id),
+    let transl = Transl::new(&Lang::from_str(lang_id));
+    conf::proj_name(
+        // &Lang::from_str(lang_id),
+        &transl,
         &PathBuf::from(path)
     )
 }
@@ -123,9 +131,11 @@ pub fn proj_name(
 //================
 #[tauri::command]
 pub fn read_src(
+    lang_id: &str,
     path: &str
 ) -> Result<String, String> {
-    cli::main_src(&PathBuf::from(path))
+    let transl = Transl::new(&Lang::from_str(lang_id));
+    src::main_src(&transl, &PathBuf::from(path))
 }
 
 //================
@@ -136,8 +146,9 @@ pub fn main_path(
     lang_id: &str,
     path: &str
 ) -> String {
-    cli::main_path(
-        &Lang::from_str(lang_id),
+    let transl = Transl::new(&Lang::from_str(lang_id));
+    src::main_path(
+        &transl,
         &PathBuf::from(path)
     )
 }
