@@ -4,3 +4,4 @@
 node_modules
 src-tauri/Cargo.lock
 .DS_Store
+.vscode/settings.json
