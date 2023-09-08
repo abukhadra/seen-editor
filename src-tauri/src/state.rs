@@ -18,7 +18,7 @@ pub struct TranslationsState<'a>(pub crate::labels::Labels<'a>);
 pub struct LangState(pub Mutex<seen_compiler::lang::Lang>);
 
 //================
-//   LangState
+//   ThemeState
 //================
 pub struct ThemeState(pub Mutex<String>);
 
@@ -26,7 +26,6 @@ pub struct ThemeState(pub Mutex<String>);
 //   HomeDirState
 //================
 pub struct HomeDirState(pub Option<PathBuf>);
-
 
 //================
 //   ProcState

@@ -15,6 +15,7 @@ use seen_compiler::{
     lang::Lang,
     transl::transl::Transl,
     project::{
+        ProjSettings,
         conf,
         build,
         src
@@ -153,7 +154,6 @@ pub fn main_path(
     )
 }
 
-
 //================
 //   new()
 //================
@@ -199,17 +199,18 @@ pub fn build(
     if path == "" { return; }
 
     let path = path.to_string();
-    let cmd = cli::Build::exec(
-        Some(PathBuf::from(path)),
-        true
-    );
+    let settings = ProjSettings::new(Some(PathBuf::from(path)), true);
+    // let cmd = cli::Build::exec(
+    //     Some(PathBuf::from(path)),
+    //     true
+    // );
+    let cmd = cli::Build::exec(&settings);
 
     cmd_io(
         cmd,
         app_handle,
         proc_state
     );
-
 }
 
 //================
@@ -222,20 +223,19 @@ pub fn run(
     proc_state: State<ProcState>
 ) {
     if path == "" { return; }
-
-    let cmd = cli::Run::exec(
-        Some(PathBuf::from(path)),
-        true
-    );
+    let settings = ProjSettings::new(Some(PathBuf::from(path)), true);
+    // let cmd = cli::Run::exec(
+    //     Some(PathBuf::from(path)),
+    //     true
+    // );
+    let cmd = cli::Run::exec(&settings);
 
     cmd_io(
         cmd,
         app_handle,
         proc_state
     );
-
 }
-
 
 //================
 //   cmd_io()
