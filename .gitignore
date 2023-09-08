@@ -1,7 +1,14 @@
-*-lock.json
+Cargo.lock
 .DS_Store
 .DS_Store?
+target
+.vscode/settings.json
+/.vscode/
+/.git/
+build
+بنية
 .DS_Store
+
+*-lock.json
 node_modules
 src-tauri/Cargo.lock
-.vscode/settings.json
