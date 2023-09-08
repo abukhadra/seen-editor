@@ -1,13 +1,12 @@
 Cargo.lock
 .DS_Store
 .DS_Store?
-target
+/target
 .vscode/settings.json
 /.vscode/
 /.git/
-build
-بنية
-.DS_Store
+/build
+/بنية
 
 *-lock.json
 node_modules
