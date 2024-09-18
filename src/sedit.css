@@ -1,0 +1,238 @@
+.CodeMirror {
+    margin: 3px; 
+    flex-grow:1;
+    font-family: monospace;
+    border: solid 1px;
+}
+
+/* #code {     
+    overflow: auto;
+    flex: auto;
+    shrink: auto;
+ } */
+
+html, body { height: 100%; margin: 0; padding: 0; }
+
+body {
+    display:flex; 
+    flex-direction:column;
+    font-family: monospace;
+}
+
+#wrapper {
+    flex-grow:1;
+    display:flex; 
+    flex-direction:column;
+    margin: 0px;
+    padding: 0px;
+}		
+
+#container {
+    flex-grow:1;
+    display:flex; 
+    flex-direction:row; 
+}
+
+#project_label {
+    margin-left: 5px;
+    margin-right: 5px;
+    border: 1px solid;
+}
+
+
+.icon { 
+    width: 20px;
+    height: 20px;
+}
+
+#theme  { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none; 
+    appearance: none;
+    
+    padding-top: 15px;
+    font-size: 0px;
+    background: transparent;    
+    background-repeat: no-repeat;
+    margin-top: 1px; 
+    cursor: pointer;
+} 
+
+option { 
+    font-size: 15px;  /* for firefox. otherwise option will inherit font-size 0px from #theme! */
+}
+
+#theme:focus{ outline: none; }
+
+#editor_output {
+    flex-grow:1;
+    display:flex; 
+    flex-direction:column;      
+}
+
+#side_by_side {
+    display:flex; 
+    flex-grow:1; 
+    flex-direction:row;  
+    margin-top : 5px;
+}
+
+#preview {
+    height: 100%;
+    flex-grow: 1; 
+    display:flex;
+    flex-direction: column;    
+    margin-left: 5px;
+    margin-right: 5px;    
+    overflow: scroll;
+
+   -webkit-scrollbar : none;
+   -ms-overflow-style: none;  /* IE and Edge */
+   scrollbar-width: none;  /* Firefox */
+    
+}
+
+
+#preview_area {
+    border: none;
+    display:flex;
+    overflow: auto;
+    outline: 1px solid;    
+    height: 100%;
+    margin: 5px;     
+}
+
+#left_side_label, #right_side_label { 
+    overflow:auto;
+}
+
+#left_side, #right_side {
+    display:flex; 
+    flex-direction: column;
+    justify-content: stretch;
+}
+
+#left_side { flex-grow: 3; width:0;}
+#right_side { flex-grow: auto;}
+
+
+#tabs_toolbar { 
+    overflow: hidden; 
+    border-bottom: 1px solid; 
+}
+
+.tab {
+    flex-shrink: 0;
+    flex-grow: 0;
+    overflow: hidden;
+    align-items: flex-start;
+    cursor: pointer;
+}
+
+#editor_toolbar {
+    margin: 5px;
+}
+
+#left_side_toolbar {
+    display: inline-block;
+}
+
+#right_side_toolbar {
+    overflow:hidden;
+    float: right;
+    display: inline-block;
+}
+
+#path { margin-left: 10px; border-bottom: 1px solid; }
+
+#output_area {
+    display: flex;
+    justify-content: space-between;
+}
+
+#output_toolbar {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+
+#right_side_close   { 
+    float: right;  
+    margin:0px;  
+    line-height: 0px;
+}
+
+#preview_titlebar {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#output {
+    max-height:150px;
+    overflow:auto;
+    word-break: break-all;
+    flex-grow: none;    
+}
+
+#status_bar {
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+p { 
+    margin-left: 10px; 
+    margin-right: 10px; 
+    margin-top: 5px; 
+    margin-bottom: 0px;
+}
+
+.btn-link {
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+.btn-link:hover { text-decoration: underline; }			
+
+button, select, option , .icon, .divider {
+    color: inherit;
+    background-color: inherit;
+    border: none;
+}
+
+
+button       { cursor: pointer;      }
+button:hover, #theme:hover { 
+    filter: invert(50%) contrast(100%);
+
+}
+
+#eval { display: none; }
+
+.divider { 
+    /* width: 200px; */
+    margin-top: 25px;
+    display: flex; 
+    flex-direction: row; 
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.divider-content { 
+    color: rgb(108 141 211);
+    overflow: nowrap;
+    text-align: center;
+    text-justify: center;
+}
+
+.divider-part {
+    display: inline;
+    /* width: 10%; */
+    /* height: 6.5px; */
+    border: 0.5px solid inherit;
+    flex-grow: 3;
+}
