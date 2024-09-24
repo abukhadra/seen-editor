@@ -24,10 +24,10 @@
     "prepare" : "vite build",
     "postprepare" : "node run html2JS.js",
     "clean": "rm -rf ./dist && rm -rf ./seditor.js && rm -rf ./node_modules",
-    "ex-editor": "npm i && npx http-server --cors -o ./examples/en-editor.html",
-    "ex-code": "npm i && npx http-server --cors -o ./examples/en-code.html",
-    "ex-editor-ar": "npm i && npx http-server --cors -o ./examples/ar-editor.html",
-    "ex-code-ar": "npm i && npx http-server --cors -o ./examples/ar-code.html"
+    "ex-editor": "npx http-server --cors -o ./examples/en-editor.html",
+    "ex-code": "npx http-server --cors -o ./examples/en-code.html",
+    "ex-editor-ar": "npx http-server --cors -o ./examples/ar-editor.html",
+    "ex-code-ar": "npx http-server --cors -o ./examples/ar-code.html"
   },
   "dependencies": {
     "seen-compiler" : "https://github.com/abukhadra/seen-compiler"
