@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <style>
+            * { box-sizing: border-box; }
+            #editor-container {
+                width: 480px ; 
+                height: 200px;
+            } */
+            html, body { 
+                height: 100%; 
+                width: 100%; 
+                margin: 0; 
+                padding: 0;
+            }            
+        </style>
+    </head>
+    <body>
+        <div id='editor-container'></div>
+        <script type="module">
+            import {SeenCode} from '../seditor.js'
+                const id = "sn-code"
+                const parent = document.querySelector('#editor-container')
+
+                SeenCode( id, parent , { 
+                        lang: 'ar' ,
+                        theme: 'dark',
+                        statusbar: false
+                } )
+        </script>
+    </body>
+</html>
+
+

@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <style>
+            * { box-sizing: border-box; }
+            #editor {
+                height: 100%; 
+                width: 100%;
+            }
+            html, body { 
+                height: 100%; 
+                width: 100%; 
+                margin: 0; 
+                padding: 0;
+            }            
+        </style>
+    </head>
+    <body>
+        <script type="module">
+            import {SeenEditor} from '../seditor.js'
+                const id = "editor"
+                const parent = document.body
+                SeenEditor( id,  parent, {
+                    lang: 'en',
+                    theme: 'dark'
+                } )
+        </script>
+    </body>
+</html>

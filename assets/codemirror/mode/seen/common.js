@@ -36,6 +36,7 @@ export const KEYWORDS = {
     where:      { ar: "حيث",          en: "where"},
     when:       { ar: "عندما",        en: "when"},
     ret:        { ar: "رد",           en: "return"},
+    _let:       { ar: "عرف",          en: "let"},
     _const:     { ar: "ثابت",         en: "const"},
     _var:       { ar: "متغير",        en: "var"},
     fn:         { ar: "دل",           en: "fn"},

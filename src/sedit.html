@@ -2,12 +2,15 @@
 <html>
 	<head>
 		<meta charset="utf-8"/>
-		<META http-equiv="cache-control" content="no-cache">
-		<META http-equiv="cache-control" content="no-store">
-		<META http-equiv="Expires" content="-1">
 
-		<!-- <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.17/codemirror.min.js"></script> -->
-		<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.17/codemirror.min.css"> -->
+		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+		<meta http-equiv="Pragma" content="no-cache">
+		<meta http-equiv="Expires" content="0">
+
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="keywords" content=" ">		
 
 		<link rel="stylesheet" href="/lib/codemirror/codemirror.css">
 		<script type="module" src="/lib/codemirror/codemirror.js"></script>
@@ -29,6 +32,8 @@
 		<link rel="stylesheet" href="/assets/codemirror/theme/moxer.css">
 		<link rel="stylesheet" href="/assets/codemirror/theme/panda-syntax.css">
 		<link rel="stylesheet" href="/assets/codemirror/theme/tomorrow-night-eighties.css">
+
+		<script> window.opts = '%SEEN_EDITOR__OPTS%' </script>
 
 		<script type="module" src="./arabic.js"></script>
 		<script type="module" src="/assets/codemirror/mode/seen/common.js"></script>
@@ -92,7 +97,7 @@
 					</div>
 					<div id="side_by_side">
 						<div id="left_side">
-							<div>
+							<div id="left_side_titlebar">
 								<label id="left_side_label"></label>
 								<span id="src_opts">
 								</span>
@@ -119,27 +124,30 @@
 							
 						</div>
 					</div>			
-					<div id="output_area">
-						<label id="output_label"></label>		
-						<div id="output_toolbar">
-							<button id="clear">
-								<svg class="icon" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 576 512">!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="currentColor" d="M566.6 54.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192-34.7-34.7c-4.2-4.2-10-6.6-16-6.6c-12.5 0-22.6 10.1-22.6 22.6l0 29.1L364.3 320l29.1 0c12.5 0 22.6-10.1 22.6-22.6c0-6-2.4-11.8-6.6-16l-34.7-34.7 192-192zM341.1 353.4L222.6 234.9c-42.7-3.7-85.2 11.7-115.8 42.3l-8 8C76.5 307.5 64 337.7 64 369.2c0 6.8 7.1 11.2 13.2 8.2l51.1-25.5c5-2.5 9.5 4.1 5.4 7.9L7.3 473.4C2.7 477.6 0 483.6 0 489.9C0 502.1 9.9 512 22.1 512l173.3 0c38.8 0 75.9-15.4 103.4-42.8c30.6-30.6 45.9-73.1 42.3-115.8z"/></svg>
-							</button>
-						</div>		
-					</div>
+					<div id="output_container">
+						<div id="output_area">
+							<label id="output_label"></label>		
+							<div id="output_toolbar">
+								<button id="clear">
+									<svg class="icon" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 576 512">!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="currentColor" d="M566.6 54.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192-34.7-34.7c-4.2-4.2-10-6.6-16-6.6c-12.5 0-22.6 10.1-22.6 22.6l0 29.1L364.3 320l29.1 0c12.5 0 22.6-10.1 22.6-22.6c0-6-2.4-11.8-6.6-16l-34.7-34.7 192-192zM341.1 353.4L222.6 234.9c-42.7-3.7-85.2 11.7-115.8 42.3l-8 8C76.5 307.5 64 337.7 64 369.2c0 6.8 7.1 11.2 13.2 8.2l51.1-25.5c5-2.5 9.5 4.1 5.4 7.9L7.3 473.4C2.7 477.6 0 483.6 0 489.9C0 502.1 9.9 512 22.1 512l173.3 0c38.8 0 75.9-15.4 103.4-42.8c30.6-30.6 45.9-73.1 42.3-115.8z"/></svg>
+								</button>
+							</div>		
+						</div>	
 						<div id="output" class="CodeMirror"></div>
+					</div>
 				</div>
 			</div>
 		</div>	
 		<footer id="status_bar"></footer>		
 		<div id="eval"></div>
 		<script type="module">
-			import {editor, hidePreview, hideRightSide, resetOutput} from './setup.js'
+			import {editor, hidePreview, hideRightSide, resetOutput, setTheme} from './setup.js'
 			function setEditorValue(code) { editor.setValue(code) }
 			window.setEditorValue = setEditorValue
 			window.hideRightSide = hideRightSide
 			window.hidePreview = hidePreview
 			window.resetOutput = resetOutput
+			window.setTheme = setTheme
 		</script>
 	</body>
 </html>

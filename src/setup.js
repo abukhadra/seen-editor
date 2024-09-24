@@ -1,8 +1,49 @@
-
   import {toEasternDigits} from './arabic.js'
   import {INDEX_LABELS , TOOLTIP_LABELS} from './labels.js'
   import {setLabels, setTooltipLabels} from './common.js'
   import Project from '../../seen-compiler/src/project.js'
+
+  const DEFAULT_DARK_THEME = 'panda-syntax'
+  const DEFAULT_LIGHT_THEME = 'ttcn_modified'
+
+  const USER_ALLOWED_OPTS = ['mode', 'lang', 'theme', 'statusbar']
+  const CODE_OPTS = {
+    lang: 'en',
+    mode: 'code',
+    theme: 'light',
+    output: false,
+    toolbar: false,
+    readonly: true,
+    statusbar: true,
+    copy: false
+  }
+  const EDITOR_OPTS = {
+    lang: 'en',
+    mode: 'editor',
+    theme: 'light',
+    output: true,
+    toolbar: true,
+    readonly: false,
+    statusbar: true,
+    copy: false    
+  }
+  const userOpts = window.opts 
+  const optMode = userOpts.mode || 'code'
+  let opts
+
+  switch ( optMode ) {
+      case 'code'       : opts = CODE_OPTS ;           break;
+      case 'editor'     : opts = EDITOR_OPTS ;         break;    
+      default           : throw new Error('invalid mode! : ' + optMode)
+  }  
+
+  let langFromURL =  new URLSearchParams(window.location.search).get('lang')
+  let lang = langFromURL || userOpts.lang
+
+  Object.keys(userOpts).forEach(k => { 
+    if (!USER_ALLOWED_OPTS.includes(k)) { throw new Error('invalid option: ' + k) }
+    opts[k] = userOpts[k] 
+  })
 
   const verbose = true
 
@@ -49,32 +90,25 @@
     "Ctrl--": () => { decreaseFont()},
   }
 
-  const CM_COMMANDS = [
-    "findCtrl"
-  ]
+  const CM_COMMANDS = [ "findCtrl" ]
 
   const eval_div = document.querySelector('#eval')
   const previewArea = document.querySelector('#preview_area')
   const observer = new MutationObserver( ( mutationsList, observer) => { if(onPageLoad) { onPageLoad = false } else { showPreview() }} );
   observer.observe(previewArea, {characterData: false, childList: true, attributes: true});
 
-  let langFromURL =  new URLSearchParams(window.location.search).get('lang')
-  langFromURL =  langFromURL && langFromURL.startsWith("ar")? "ar" : "en"
-
-  let themeFromURL =  new URLSearchParams(window.location.search).get('theme')
-  themeFromURL = themeFromURL && themeFromURL.toLowerCase()
-
+  
   export const editor = CodeMirror.fromTextArea(document.querySelector('#code'), {
     lineNumbers: true,
     lineWrapping: true,
-    direction: getDir(langFromURL),
+    direction: getDir(lang),
     scrollbarStyle: "simple",
     indentUnit: 4, 
     tabSize: 4,
     styleActiveLine: true,
     matchBrackets: true,
     autoCloseBrackets: true,
-    lineNumberFormatter: lineNumberFormatter(getDir(langFromURL)),
+    lineNumberFormatter: lineNumberFormatter(getDir(lang)),
 
     extraKeys: {
       ...commonKeyMap,
@@ -119,15 +153,17 @@
   function getDir(lang) { return lang === 'ar'? 'rtl' : 'ltr'}
 
   const SAMPLE_CODE= { 
-    ar: `دل بدء {
-      اطبع_سطر(«السلام عليكم!»)  
-    }`,
-    en: `fn main { 
-      println('hello world') 
-    }`
+    ar: 
+  `دل بدء {
+    اطبع_سطر(«السلام عليكم!»)  
+  }`,
+    en: 
+  `fn main { 
+    println('hello world') 
+  }`
   }
 
-  await init(langFromURL);
+  await init(lang);
   await setupListeners();
 
   async function init(langId) {
@@ -164,11 +200,31 @@
     arSetup(lang)
     setCursorPosition(1,1);
     if(projPath) { openProj(projPath); }
-    await setTheme(themeFromURL)
+    // await setThemeFromOptions()
+
+    await setTheme(opts.theme)
+
+    if( isCodeMode() ) { codeMode() }
+    if( !opts.statusbar) { removeStatusBar() }
     document.querySelector('body').style.visibility = 'visible'
   }
 
-  async function setEditorLang(id) { editorLang = id; }
+  function isCodeMode() { return opts.mode === 'code' }
+  function isEditorMode() { return opts.mode === 'editor' }
+
+  function removeStatusBar() { document.querySelector('#status_bar').setAttribute('style',  'display: none;') }
+
+  function codeMode() {
+      document.querySelector('#output_container').setAttribute('style',  'display: none;') 
+      document.querySelector('#editor_toolbar').setAttribute('style',  'display: none;') 
+      document.querySelector('#left_side_titlebar').setAttribute('style',  'display: none;') 
+      document.querySelector('#right_side_titlebar').setAttribute('style',  'display: none;') 
+      document.querySelector('#tabs_toolbar').setAttribute('style',  'display: none;')     
+      document.querySelector('#tabs_toolbar').setAttribute('style',  'display: none;')     
+      document.querySelector('#side_by_side').setAttribute('style',  'margin-top: 0;')     
+  }
+
+  async function setEditorLang(lang) { editorLang = lang; }
 
   async function setTitle(lang, text) {
     if (lang === "ar") {
@@ -229,7 +285,6 @@
   }
 
   function indent() {    
-      // src: https://gist.github.com/danieleds/326903084a196055a7c3#file-gistfile1-js 
       if (editor.somethingSelected()) {
         var sel = editor.getSelection("\n");
           // Indent only if there are multiple lines selected, or if the selection spans a full line
@@ -244,16 +299,30 @@
   }
 
   function dedent() {
-        // src: https://gist.github.com/danieleds/326903084a196055a7c3#file-gistfile1-js 
         editor.indentSelection("subtract");
   }    
 
   function increaseFont() { fontSize++; setFontSize(fontSize); }
   function decreaseFont() { fontSize--; setFontSize(fontSize); }
 
-  async function setTheme(nameFromURL) {
-    let themes = document.querySelector("#theme")
-    let name = nameFromURL || themes.options[themes.selectedIndex].value  
+  async function setThemeFromOptions() {
+      let themes = document.querySelector("#theme")
+      let name = themes.options[themes.selectedIndex].value  
+      await setTheme(name)
+  }
+
+  export async function setTheme(name) {
+
+      if(name === 'dark') { 
+        name = DEFAULT_DARK_THEME
+        document.querySelector('#theme').value = DEFAULT_DARK_THEME
+      }
+      else if(name === 'light') { 
+        name = DEFAULT_LIGHT_THEME
+        document.querySelector('#theme').value = 'ttcn'
+      }
+
+
       const updateThemeClass = (el, name) => {
           [...el.classList].forEach(className => {        
               if(className.startsWith("cm-s")) {
@@ -273,6 +342,8 @@
       const inherited =  window.getComputedStyle(document.querySelector('#run')).getPropertyValue('color');
       document.querySelector('#theme').style.backgroundImage=`url("data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20512'%3e%3c!--!Font%20Awesome%20Free%206.6.0%20by%20@fontawesome%20-%20https://fontawesome.com%20License%20-%20https://fontawesome.com/license/free%20Copyright%202024%20Fonticons,%20Inc.--%3e%3cpath%20fill='${inherited}'%20d='M512%20256c0%20.9%200%201.8%200%202.7c-.4%2036.5-33.6%2061.3-70.1%2061.3L344%20320c-26.5%200-48%2021.5-48%2048c0%203.4%20.4%206.7%201%209.9c2.1%2010.2%206.5%2020%2010.8%2029.9c6.1%2013.8%2012.1%2027.5%2012.1%2042c0%2031.8-21.6%2060.7-53.4%2062c-3.5%20.1-7%20.2-10.6%20.2C114.6%20512%200%20397.4%200%20256S114.6%200%20256%200S512%20114.6%20512%20256zM128%20288a32%2032%200%201%200%20-64%200%2032%2032%200%201%200%2064%200zm0-96a32%2032%200%201%200%200-64%2032%2032%200%201%200%200%2064zM288%2096a32%2032%200%201%200%20-64%200%2032%2032%200%201%200%2064%200zm96%2096a32%2032%200%201%200%200-64%2032%2032%200%201%200%200%2064z'/%3e%3c/svg%3e")`
   } 
+
+
 
   function setFooterTheme() {
       const status_bar = document.querySelector("#status_bar");
@@ -386,7 +457,7 @@
   async function setupListeners() {
     document.querySelector('body').addEventListener('keydown', (e) => handleKeydown(e));
     document.querySelector('body').addEventListener('keyup', (e) => { keydown[e.key] = false } );
-    document.querySelector('#theme').addEventListener('change', () => setTheme());
+    document.querySelector('#theme').addEventListener('change', () => setThemeFromOptions());
     document.querySelector('#run').addEventListener('click', () => run());
     document.querySelector('#srccode').addEventListener('click', () => js());
     document.querySelector('#right_side_close').addEventListener('click', () => closeRightSide());
