@@ -29,7 +29,7 @@
     "ex-code-ar": "npm run build && npx http-server --cors -o ./examples/ar-code.html"
   },
   "dependencies": {
-    "seen-compiler" : "https://github.com/abukhadra/seen-editor"
+    "seen-compiler" : "https://github.com/abukhadra/seen-compiler"
   },  
   "author": "Mustafa Abukhadra",
   "license": "MIT",
