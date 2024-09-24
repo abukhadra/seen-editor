@@ -1,7 +1,8 @@
 {
   "name": "seen-editor",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "seen editor",
+  "type": "module",
   "keywords" : [
     "seen" , 
     "programming language", 
@@ -28,7 +29,7 @@
     "ex-code-ar": "npm run build && npx http-server --cors -o ./examples/ar-code.html"
   },
   "dependencies": {
-    "seen-compiler" : "https://github.com/abukhadra/seen-compiler"
+    "seen-compiler" : "https://github.com/abukhadra/seen-editor"
   },  
   "author": "Mustafa Abukhadra",
   "license": "MIT",
