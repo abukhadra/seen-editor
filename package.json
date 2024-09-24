@@ -20,13 +20,14 @@
     "lib": "lib"
   },
   "scripts": {
-    "build": "npm run clean && npm install && npm run html2JS",
-    "html2JS": "vite build && node html2JS.js",
+    "preinstall" : "npm run clean",
+    "prepare" : "vite build",
+    "postprepare" : "node run html2JS.js",
     "clean": "rm -rf ./dist && rm -rf ./seditor.js && rm -rf ./node_modules",
-    "ex-editor": "npm run build && npx http-server --cors -o ./examples/en-editor.html",
-    "ex-code": "npm run build && npx http-server --cors -o ./examples/en-code.html",
-    "ex-editor-ar": "npm run build && npx http-server --cors -o ./examples/ar-editor.html",
-    "ex-code-ar": "npm run build && npx http-server --cors -o ./examples/ar-code.html"
+    "ex-editor": "npm i && npx http-server --cors -o ./examples/en-editor.html",
+    "ex-code": "npm i && npx http-server --cors -o ./examples/en-code.html",
+    "ex-editor-ar": "npm i && npx http-server --cors -o ./examples/ar-editor.html",
+    "ex-code-ar": "npm i && npx http-server --cors -o ./examples/ar-code.html"
   },
   "dependencies": {
     "seen-compiler" : "https://github.com/abukhadra/seen-compiler"
@@ -35,6 +36,7 @@
   "license": "MIT",
   "homepage": "https://seenlang.org",
   "devDependencies": {
-    "@vitejs/plugin-vue": "^5.1.4"
+    "@vitejs/plugin-vue": "^5.1.4",
+    "http-server": "^14.1.1"
   }
 }
