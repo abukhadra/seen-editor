@@ -27,8 +27,8 @@
     "clean-out" : "rm -rf ./dist && rm -rf ./sedit.js",
     "ex-editor": "npx http-server --cors -o ./examples/en-editor.html",
     "ex-code": "npx http-server --cors -o ./examples/en-code.html",
-    "ex-editor-ar": "npx http-server --cors -o ./examples/ar-editor.html",
-    "ex-code-ar": "npx http-server --cors -o ./examples/ar-code.html"
+    "ar-ex-editor": "npx http-server --cors -o ./examples/ar-editor.html",
+    "ar-ex-code": "npx http-server --cors -o ./examples/ar-code.html"
   },
   "dependencies": {
     "seen-compiler" : "https://github.com/abukhadra/seen-compiler"
