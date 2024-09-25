@@ -41,7 +41,7 @@ function start() {
 }
 
 function writeToJS(data) {
-  fs.writeFile('./seditor.js', data, err => {
+  fs.writeFile('./sedit.js', data, err => {
   if (err) { console.error(err);  return; }
 });
 }

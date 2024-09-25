@@ -20,10 +20,11 @@
     "lib": "lib"
   },
   "scripts": {
-    "preinstall" : "npm run clean",
+    "preinstall" : "npm run clean-out",
     "prepare" : "vite build",
     "postprepare" : "node run html2JS.js",
-    "clean": "rm -rf ./dist && rm -rf ./seditor.js && rm -rf ./node_modules",
+    "clean": "npm run clean-out && rm -rf ./node_modules  && rm -rf ./package-lock.json",
+    "clean-out" : "rm -rf ./dist && rm -rf ./sedit.js",
     "ex-editor": "npx http-server --cors -o ./examples/en-editor.html",
     "ex-code": "npx http-server --cors -o ./examples/en-code.html",
     "ex-editor-ar": "npx http-server --cors -o ./examples/ar-editor.html",
