@@ -20,12 +20,12 @@
     "lib": "lib"
   },
   "imports": {
-    "#seen-compiler/*": "/lib/seen-compiler/v0.1.3/*"
+    "#seen-compiler/*": "/lib/seen-compiler/scomp.js"
   },
   "scripts": {
     "prerelease": "npm i",
     "release" : "vite build",
-    "postrelease" : "node ./lib/release/html2JS.js && node ./lib/releaes/banner.js",
+    "postrelease" : "node ./lib/release/html2JS.js && rm -rf ./dist/src && node ./lib/release/banner.js",
     "preinstall" : "npm run clean-out",
     "clean": "npm run clean-out && rm -rf ./node_modules  && rm -rf ./package-lock.json",
     "clean-out" : "rm -rf ./dist",
