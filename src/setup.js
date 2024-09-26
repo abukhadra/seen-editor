@@ -1,7 +1,7 @@
   import {toEasternDigits} from './arabic.js'
   import {INDEX_LABELS , TOOLTIP_LABELS} from './labels.js'
   import {setLabels, setTooltipLabels} from './common.js'
-  import {Project} from 'seen-compiler/src/main.js'
+  import {Project} from '#seen-compiler/scomp.js'
 
   const DEFAULT_DARK_THEME = 'panda-syntax'
   const DEFAULT_LIGHT_THEME = 'ttcn_modified'

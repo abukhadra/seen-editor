@@ -15,9 +15,7 @@ export default defineConfig({
           input: {
             main: resolve(__dirname, 'src/sedit.html'),
           },
-          output: {
-            dir: 'dist',
-          }
+          output: { dir: 'dist'}
         },
       },    
 	plugins: [
