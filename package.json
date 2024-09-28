@@ -20,7 +20,7 @@
     "lib": "lib"
   },
   "imports": {
-    "#seen-compiler/*": "/lib/seen-compiler/scomp.js"
+    "#seen-compiler/*": "/lib/scomp.js"
   },
   "scripts": {
     "prerelease": "npm i",
