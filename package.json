@@ -23,6 +23,8 @@
     "#seen-compiler/*": "/lib/scomp.js"
   },
   "scripts": {
+    "predevrelease": "npm i",
+    "devreleases" : "vite build",    
     "prerelease": "npm i",
     "release" : "vite build",
     "postrelease" : "node ./lib/release/html2JS.js && rm -rf ./dist/src && node ./lib/release/banner.js",
