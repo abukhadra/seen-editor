@@ -1,7 +1,7 @@
   import {toEasternDigits} from './arabic.js'
   import {INDEX_LABELS , TOOLTIP_LABELS} from './labels.js'
   import {setLabels, setTooltipLabels} from './common.js'
-  import {Project} from '#seen-compiler/scomp.js'
+  import {Compiler} from '#seen-compiler/scomp.js'
 
   const DEFAULT_DARK_THEME = 'panda-syntax'
   const DEFAULT_LIGHT_THEME = 'ttcn_modified'
@@ -398,9 +398,9 @@
       hidePreview()
       resetOutput()
       try {        
-          let proj = await genJS()
+          let compiler = await genJS()
               
-          runInsideIframe(proj.get_code())
+          runInsideIframe(compiler.get_code())
           // writeOutput(divider())          
           const END = editorLang === 'ar' ? 'انتهى': 'End'
           writeP('\n')
@@ -430,26 +430,26 @@
   async function genJS() {
 
     let content = editor.getValue()
-    let proj = new Project()
+    let compiler = new Compiler()
     
     let target_opts = { ignore_export: true, }
     const main_args = { 
       preview_id: '#preview_area' ,
       معرف_منطقة_العرض : '#preview_area'
     }
-    proj.init(content, main_args , editorLang, target_opts)
+    compiler.init(content, main_args , editorLang, target_opts)
     
-    proj.compile()
+    compiler.run()
     document.querySelector("#right_side_label").innerText = editorLang === "ar"? "نص البرنامج" : "Code";
-    // let code = proj.gen_code
-    let code = js_beautify(proj.gen_code, jsBeautifyOptions)
+    // let code = compiler.gen_code
+    let code = js_beautify(compiler.gen_code, jsBeautifyOptions)
     
     targetEditor.setOption("mode", "javascript");
     targetEditor.setOption("direction", "ltr");
     targetEditor.setOption("lineNumberFormatter", lineNumberFormatter("ltr"))      
     targetEditor.setValue(code)  
 
-    return proj
+    return compiler
   }
 
   async function clear() { document.querySelector("#output").innerHTML = ''; }
