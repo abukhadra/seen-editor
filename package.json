@@ -31,9 +31,9 @@
     "preinstall": "npm run clean-out",
     "clean": "npm run clean-out && rm -rf ./node_modules  && rm -rf ./package-lock.json",
     "clean-out": "rm -rf ./dist",
-    "ex-editor": "npx http-server --cors -o ./examples/en-editor.html",
+    "ex-edit": "npx http-server --cors -o ./examples/en-editor.html",
     "ex-code": "npx http-server --cors -o ./examples/en-code.html",
-    "ar-ex-editor": "npx http-server --cors -o ./examples/ar-editor.html",
+    "ar-ex-edit": "npx http-server --cors -o ./examples/ar-editor.html",
     "ar-ex-code": "npx http-server --cors -o ./examples/ar-code.html"
   },
   "author": "Mustafa Abukhadra",
