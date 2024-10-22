@@ -3,13 +3,13 @@
   "version": "0.1.5",
   "description": "seen editor",
   "type": "module",
-  "keywords" : [
-    "seen" , 
-    "programming language", 
+  "keywords": [
+    "seen",
+    "programming language",
     "editor",
-    "س" , 
-    "لغة برمجة", 
-    "محرر" 
+    "س",
+    "لغة برمجة",
+    "محرر"
   ],
   "repository": {
     "type": "git",
@@ -24,13 +24,13 @@
   },
   "scripts": {
     "predevrelease": "npm i",
-    "devrelease" : "vite build",    
+    "devrelease": "vite build",
     "prerelease": "npm i",
-    "release" : "vite build",
-    "postrelease" : "node ./lib/release/html2JS.js && rm -rf ./dist/src && node ./lib/release/banner.js",
-    "preinstall" : "npm run clean-out",
+    "release": "vite build",
+    "postrelease": "node ./lib/release/html2JS.js && rm -rf ./dist/src && node ./lib/release/banner.js",
+    "preinstall": "npm run clean-out",
     "clean": "npm run clean-out && rm -rf ./node_modules  && rm -rf ./package-lock.json",
-    "clean-out" : "rm -rf ./dist",
+    "clean-out": "rm -rf ./dist",
     "ex-editor": "npx http-server --cors -o ./examples/en-editor.html",
     "ex-code": "npx http-server --cors -o ./examples/en-code.html",
     "ar-ex-editor": "npx http-server --cors -o ./examples/ar-editor.html",
@@ -41,6 +41,7 @@
   "homepage": "https://seenlang.org",
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.1.4",
+    "vite-plugin-singlefile": "^2.0.2",
     "http-server": "^14.1.1"
   }
 }
