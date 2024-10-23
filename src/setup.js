@@ -400,7 +400,7 @@
       try {        
           let compiler = await genJS()
               
-          runInsideIframe(compiler.get_code())
+          runInsideIframe(await compiler.get_code())
           // writeOutput(divider())          
           const END = editorLang === 'ar' ? 'انتهى': 'End'
           writeP('\n')
