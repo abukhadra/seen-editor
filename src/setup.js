@@ -85,7 +85,7 @@
     "Tab" : () => indent(),
     "Shift-Tab" : () => dedent(),  
     "Ctrl-'": () => { insertChar("«»")},
-    "Ctrl-0": () => { run()},  
+    "Ctrl-0": () => {  run()},  
     "Ctrl-=": () => { increaseFont()},
     "Ctrl--": () => { decreaseFont()},
   }
@@ -439,7 +439,7 @@
     }
     compiler.init(content, main_args , editorLang, target_opts)
     
-    compiler.run()
+    await compiler.run()
     document.querySelector("#right_side_label").innerText = editorLang === "ar"? "نص البرنامج" : "Code";
     // let code = compiler.gen_code
     let code = js_beautify(compiler.gen_code, jsBeautifyOptions)
