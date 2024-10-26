@@ -22,7 +22,7 @@ export const OPERATORS = [
   "\^=",   ">>=",  "<<=",  ":+",  "::",
 
 // separators and other symbols:
-"@",  "\$",   "%", "٪" , "#",
+"\$",   "%", "٪" , "#",
 "⎔",  "~" ,
 "\]",   "\{",   "\}",     "\\)",
 "\'",   "\"", "»", "«", "‹" , "›"
@@ -32,10 +32,11 @@ export const OPERATORS = [
 
 // order in arabic is significant ( since we can't use \b), longest match should come first ( e.g: ليكن before ل )
 export const KEYWORDS = {   
-    use:      { ar: "احضر",         en: "use"},
+    methods:    { ar: "@",            en: "@"},
+    use:        { ar: "احضر",         en: "use"},
     where:      { ar: "حيث",          en: "where"},
     when:       { ar: "عندما",        en: "when"},
-    ret:        { ar: "اعد",           en: "return"},
+    ret:        { ar: "اعد",          en: "return"},
     _let:       { ar: "عرف",          en: "let"},
     _const:     { ar: "ثابت",         en: "const"},
     _var:       { ar: "متغير",        en: "var"},
