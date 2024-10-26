@@ -156,11 +156,11 @@
     ar: 
   `دل بدء {
     اطبع_سطر(«السلام عليكم!»)  
-  }`,
+}`,
     en: 
   `fn main { 
     println('hello world') 
-  }`
+}`
   }
 
   await init(lang);
