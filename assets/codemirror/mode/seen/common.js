@@ -46,8 +46,7 @@ export const KEYWORDS = {
     // not keywords but for highlighting purposes:
     res:        { ar: "\u{1EE4D}",    en: "\u{1EE4D}"},
     ok:         { ar: "✓",            en: "✓"},
-    err:        { ar: "✗",            en: "✗"}        
-
+    err:        { ar: "✗",            en: "✗"},        
   };
   
   export const ATOMS = {
@@ -55,13 +54,14 @@ export const KEYWORDS = {
       int:        { ar: "صحيح",               en:"int"},
       str:        { ar: "سلسلة",              en:"str"},
       bool:       { ar: "منطقي",              en:"bool"},
-      char:       { ar: "محرف",               en:"char"},
+      char:       { ar: "محرف",               en:"char"},      
   };
   
 
   export const BUILTINS = {
       _true:      { ar: "صحيح",               en:"true"},
       _false:     { ar: "غير_صحيح",            en:"false"},    
+      void:       { ar: "لا_شيء",        en: "void"},
   };
 
 
