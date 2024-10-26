@@ -32,7 +32,6 @@ export const OPERATORS = [
 
 // order in arabic is significant ( since we can't use \b), longest match should come first ( e.g: ليكن before ل )
 export const KEYWORDS = {   
-    methods:    { ar: "@",            en: "@"},
     use:        { ar: "احضر",         en: "use"},
     where:      { ar: "حيث",          en: "where"},
     when:       { ar: "عندما",        en: "when"},
@@ -45,6 +44,7 @@ export const KEYWORDS = {
     impl:       { ar: "اضافة",        en: "impl"}, 
     trait:      { ar: "سمة",          en: "trait"},
     // not keywords but for highlighting purposes:
+    methods:    { ar: "@",            en: "@"},
     res:        { ar: "\u{1EE4D}",    en: "\u{1EE4D}"},
     ok:         { ar: "✓",            en: "✓"},
     err:        { ar: "✗",            en: "✗"},        
