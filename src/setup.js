@@ -51,9 +51,9 @@
   window.console["error"] = err => { 
 
     if(isChrome()) {
-      verbose? writeP(err.message, ERROR_COLOR) : writeP(err.stack, ERROR_COLOR) 
+      verbose?  writeP(err.stack, ERROR_COLOR) : writeP(err.message, ERROR_COLOR) 
     }  else { 
-      verbose? writeP(err.message, ERROR_COLOR) : writeP(err, ERROR_COLOR)    
+      verbose? writeP(err, ERROR_COLOR) : writeP(err.message, ERROR_COLOR)
     }
   }
 
